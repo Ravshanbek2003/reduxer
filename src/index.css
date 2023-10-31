@@ -1,69 +1,159 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
-  margin: 0;
+  width: 90%;
+  height: 90vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-image: url("https://img1.goodfon.ru/original/4000x3000/3/32/evro-dengi-valyuta-583.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.custom-field {
+  position: relative;
+  font-size: 14px;
+  border-top: 20px solid transparent;
+  margin-bottom: 5px;
+  display: inline-block;
+  --field-padding: 12px;
+}
+
+.custom-field input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: var(--field-padding);
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(81, 239, 7);
+  background-color: #d30909;
+}
+
+.custom-field .placeholder {
+  position: absolute;
+  left: var(--field-padding);
+  width: calc(100% - (var(--field-padding) * 2));
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 22px;
+  line-height: 100%;
+  transform: translateY(-50%);
+  color: #0e7dec;
+  transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+  /* background-color: red; */
+}
+
+.custom-field input.dirty + .placeholder,
+.custom-field input:focus + .placeholder,
+.custom-field input:not(:placeholder-shown) + .placeholder {
+  top: -10px;
+  font-size: 10px;
+  color: #222;
+}
+
+.custom-field .error-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 12px;
+  background: #d30909;
+  color: #fff;
+  height: 24px;
+}
+
+.custom-field .error-message:empty {
+  opacity: 0;
+}
+
+/* ONE */
+.custom-field.one input {
+  background: none;
+  border: 2px solid #0d7603;
+  transition: border-color 0.3s ease;
+}
+
+.custom-field.one input + .placeholder {
+  left: 8px;
+  padding: 0 5px;
+}
+
+.custom-field.one input.dirty,
+.custom-field.one input:not(:placeholder-shown),
+.custom-field.one input:focus {
+  border-color: #222;
+  transition-delay: 0.1s;
+}
+
+.custom-field.one input.dirty + .placeholder,
+.custom-field.one input:not(:placeholder-shown) + .placeholder,
+.custom-field.one input:focus + .placeholder {
+  top: 0;
+  font-size: 10px;
+  color: #222;
+  background: transparent;
+  width: auto;
+  color: rgb(10, 236, 6);
+  text-shadow: 2px 2px 4px green;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #5c6664;
+  background-image: none;
+  flex: 1;
+  padding: 0 0.5em;
+  color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
 }
-button:hover {
-  border-color: #646cff;
+select::-ms-expand {
+  display: none;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.select {
+  position: relative;
+  display: flex;
+  width: 10em;
+  height: 3em;
+  line-height: 3;
+  background: #5c6664;
+  overflow: hidden;
+  border-radius: 0.25em;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #2b2e2e;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+}
+.select:hover::after {
+  color: #23b499;
 }

@@ -1,5 +1,4 @@
-import { useCallback, useReducer } from "react";
-import "./App.css";
+import { useReducer } from "react";
 import data from "./data";
 
 const obj = [];
@@ -35,60 +34,82 @@ function App() {
     secondValue: "",
     firstValue: "",
   });
-
-  const add = useCallback(() => {}, []);
-  add();
+  console.log(count);
+  // const add = useCallback(() => {}, []);
+  // add();
   return (
     <>
-      <label>
-        <input
-          defaultValue={count.second}
-          type="number"
-          onChange={(e) =>
-            setCount({ value: e.target.value, type: "firstInput" })
-          }
-        />
-        <select
-          name=""
-          id=""
-          onChange={(e) =>
-            setCount({ type: "firstValue", value: e.target.value })
-          }
-        >
-          {obj.map((el) => {
-            return (
-              <option key={el.key} value={el.value}>
-                {el.key}
-              </option>
-            );
-          })}
-        </select>
-      </label>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <label className="custom-field one">
+          <input
+            placeholder=" "
+            defaultValue={count.second}
+            type="number"
+            onChange={(e) =>
+              setCount({ value: e.target.value, type: "firstInput" })
+            }
+          />
+          <span className="placeholder">Enter amount</span>
+        </label>
+        <div style={{ marginTop: "15px" }} className="select">
+          <select
+            name="format"
+            id="format"
+            onChange={(e) =>
+              setCount({ type: "firstValue", value: e.target.value })
+            }
+          >
+            <option value="" selected disabled>
+              from
+            </option>
+            {obj.map((el) => {
+              return (
+                <option key={el.key} value={el.value}>
+                  {el.key}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
+
       <br />
-      <label>
-        <input
-          defaultValue={count.first}
-          type="number"
-          onChange={(e) =>
-            setCount({ value: e.target.value, type: "secondInput" })
-          }
-        />
-        <select
-          name=""
-          id=""
-          onChange={(e) =>
-            setCount({ type: "secondValue", value: e.target.value })
-          }
-        >
-          {obj.map((el) => {
-            return (
-              <option key={el.key} value={el.value}>
-                {el.key}
-              </option>
-            );
-          })}
-        </select>
-      </label>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <label className="custom-field one">
+          <input
+            placeholder=" "
+            defaultValue={count.first}
+            type="number"
+            onChange={(e) =>
+              setCount({ value: e.target.value, type: "secondInput" })
+            }
+          />
+          <span className="placeholder">Enter amount</span>
+        </label>
+        <div style={{ marginTop: "15px" }} className="select">
+          <select
+            name="format"
+            id="format"
+            onChange={(e) =>
+              setCount({ type: "secondValue", value: e.target.value })
+            }
+          >
+            <option value="" selected disabled>
+              to
+            </option>
+            {obj.map((el) => {
+              return (
+                <option key={el.key} value={el.value}>
+                  {el.key}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
+      <br />
+
+      <br />
       <br />
     </>
   );
