@@ -17,11 +17,11 @@ function cal(oldValue, action) {
   }
   if (action.type === "firstInput") {
     oldValue.first =
-      (action.value * oldValue.firstValue) / oldValue.secondValue;
+      (action.value * oldValue.secondValue) / oldValue.firstValue;
   }
   if (action.type === "secondInput") {
     oldValue.second =
-      (action.value * oldValue.secondValue) / oldValue.firstValue;
+      (action.value * oldValue.firstValue) / oldValue.secondValue;
   }
 
   return { ...oldValue };
